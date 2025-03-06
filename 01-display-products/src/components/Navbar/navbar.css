@@ -1,0 +1,13 @@
+
+
+@media screen and (max-width : 992px) {
+  .nav-left { 
+    display: none;
+  }
+  .nav_class{
+    align-self: flex-end;
+  }
+  .navl_class {
+    justify-content: flex-end !important;
+  }
+}
