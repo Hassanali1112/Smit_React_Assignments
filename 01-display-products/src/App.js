@@ -11,7 +11,7 @@ function App() {
     <MyNavbar />
     <Brands />
     <MyCarousel />
-    <BrandCard />
+    {/* <BrandCard /> */}
       
     </>
   );

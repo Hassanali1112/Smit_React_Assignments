@@ -1,24 +1,27 @@
 import Card from "react-bootstrap/Card";
 
 
-const BrandCard = ()=>{
-
+const BrandCard = ({ title, imgUrl }) => {
+  // console.log(imgUrl);
   return (
     <>
       <Card
-        className="slider border border-danger py-5"
-        //  style={{ width: "17.75rem" }}
+        className="w-100 p-0  "
+         style={{ border : "none" }}
       >
-        <Card.Img variant="top" src="" />
-        <Card.Body>
-          <Card.Title></Card.Title>
+        <div className="img_container d-flex justify-content-center">
+          <Card.Img variant="top" style={{ width: "80px" }} src={imgUrl} />
+        </div>
+
+        <Card.Body className="border-none text-center px-0 pb-0 lead">
+          <Card.Title style={{ fontSize: ".83rem" }}>{title}</Card.Title>
           <Card.Text></Card.Text>
-          
+
           {/* <Button variant="success"></Button> */}
         </Card.Body>
       </Card>
     </>
   );
-}
+};
 
 export default BrandCard;

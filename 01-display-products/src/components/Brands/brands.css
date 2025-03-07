@@ -1,0 +1,21 @@
+@media screen and (min-width : 992px) {
+  .col_width {
+    width: 11.1% !important;
+  }
+}
+
+@media screen and (max-width : 992px) {
+  .col_width {
+    width: 16% !important;
+  }
+}
+@media screen and (max-width : 764px) {
+  .col_width {
+    width: 20% !important;
+  }
+}
+@media screen and (max-width : 567px) {
+  .col_width {
+    width: 27% !important;
+  }
+}

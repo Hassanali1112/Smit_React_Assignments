@@ -48,9 +48,10 @@ function MyNavbar() {
             </Nav>
           </div>
 
-          <div className=" d-flex nav_class gap-5">
+          <div className=" d-flex nav_class gap-3 gap-lg-5">
             <Form className="d-flex border">
-              <Form.Control style={{fontSize : ".8rem"}}
+              <Form.Control
+                style={{ fontSize: ".8rem" }}
                 type="search"
                 placeholder="Search Products"
                 className="border-0"
@@ -66,7 +67,7 @@ function MyNavbar() {
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
               </Button>
             </Form>
-            <div className="icons d-flex align-items-center gap-5">
+            <div className="icons d-flex align-items-center gap-3 gap-lg-5">
               <FontAwesomeIcon icon={faShoppingCart} size="2x" />
               <FontAwesomeIcon icon={faUser} size="2x" />
             </div>
