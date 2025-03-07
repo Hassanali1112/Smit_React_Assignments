@@ -48,7 +48,7 @@ const Brands = () => {
   ];
 
   return (
-    <div className="container p-3 ">
+    <div className="container my-3 p-3 ">
       <div
         className="parent"
         style={{ borderRadius: "10px", background: "#FFFFFF" }}

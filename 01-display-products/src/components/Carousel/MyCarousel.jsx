@@ -119,7 +119,7 @@ const MyCarousel = () => {
                <Card.Img variant="top" src={item.img} />
                <Card.Body>
                  <Card.Title>{item.name}</Card.Title>
-                 <Card.Text>
+                 <Card.Text style={{fontSize : ".8rem"}}>
                    {item.fullName}
                  </Card.Text>
                  <Button variant="success">{item.price}</Button>
