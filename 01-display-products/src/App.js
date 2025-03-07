@@ -3,6 +3,7 @@ import "./App.css";
 import MyNavbar from "./components/Navbar/MyNavbar";
 import Brands from "./components/Brands/Brands";
 import MyCarousel from "./components/Carousel/MyCarousel";
+import BrandCard from "./components/BrandCard/BrandCard";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
     <MyNavbar />
     <Brands />
     <MyCarousel />
-    
+    <BrandCard />
       
     </>
   );

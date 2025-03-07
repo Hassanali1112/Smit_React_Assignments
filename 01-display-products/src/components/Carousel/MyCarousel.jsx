@@ -34,7 +34,7 @@ const sliderImageUrl = [
     fullName:
       "Casio Analog-Digital Black Dial Women’s Watch-BA-110RG-1ADR (BX157)",
     category: "Women's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2020/12/BA-110RG-1ADR-1.jpg",
   },
@@ -46,7 +46,7 @@ const sliderImageUrl = [
 
     fullName: "G-shock Casio 09 Champagne Index - 126231-62801",
     category: "Men's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2022/01/GM-S2100-3ADR-1.jpg",
   },
@@ -55,7 +55,7 @@ const sliderImageUrl = [
     price: "$600",
     fullName: "G-shock Casio 10 Champagne Index - 126231-62801",
     category: "Men's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2023/03/GMA-S2100-1ADR.jpg",
   },
@@ -67,7 +67,7 @@ const sliderImageUrl = [
 
     fullName: "G-shock Casio 10 Champagne Index - 126231-62801",
     category: "Men's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2023/03/GA-2000S-1ADR.jpg",
   },
@@ -79,7 +79,7 @@ const sliderImageUrl = [
 
     fullName: "G-shock Casio 10 Champagne Index - 126231-62801",
     category: "Men's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2023/03/GA-2100-1A3DR.jpg",
   },
@@ -91,14 +91,14 @@ const sliderImageUrl = [
 
     fullName: "G-shock Casio 10 Champagne Index - 126231-62801",
     category: "Men's Watch",
-    color: [, "golden", "silver"],
+    color: [ "golden", "silver"],
     Tags: "126231-62801, Automatic, certified pre-owned, Datejust 36, Datejust 36 Men, Rolex, watch",
     img: "https://iwc.com.pk/wp-content/uploads/2023/03/GA-2100FR-5ADR.jpg",
   },
 ];
 const MyCarousel = () => {
    return (
-     <div className="parent container my-5 p-0" style={{backgroundColor : "#ffffff"}}>
+     <div className="parent container p-0" style={{backgroundColor : "#ffffff"}}>
        <Carousel
          responsive={responsive}
          autoPlay={true}
@@ -109,21 +109,20 @@ const MyCarousel = () => {
          partialVisible={false}
          dotListClass="custom-dot-list-style"
        >
-         {sliderImageUrl.map((imageUrl, index) => {
+         {sliderImageUrl.map((item, index) => {
            return (
              <Card
                className="slider"
                key={index}
                style={{ width: "17.75rem" }}
              >
-               <Card.Img variant="top" src={imageUrl.img} />
+               <Card.Img variant="top" src={item.img} />
                <Card.Body>
-                 <Card.Title>Card Title</Card.Title>
+                 <Card.Title>{item.name}</Card.Title>
                  <Card.Text>
-                   Some quick example text to build on the card title and make
-                   up the bulk of the card's content.
+                   {item.fullName}
                  </Card.Text>
-                 <Button variant="primary">Go somewhere</Button>
+                 <Button variant="success">{item.price}</Button>
                </Card.Body>
              </Card>
            );

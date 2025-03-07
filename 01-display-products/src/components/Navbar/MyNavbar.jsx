@@ -50,9 +50,9 @@ function MyNavbar() {
 
           <div className=" d-flex nav_class gap-5">
             <Form className="d-flex border">
-              <Form.Control
+              <Form.Control style={{fontSize : ".8rem"}}
                 type="search"
-                placeholder="Search"
+                placeholder="Search Products"
                 className="border-0"
                 aria-label="Search"
               />
