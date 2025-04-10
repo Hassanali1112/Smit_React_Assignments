@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import Form from '../../Components/Form/Form'
+import React, { useState } from "react";
+import Form from "../../Components/Form/Form";
+import { supabase } from "../../Utils/config";
 
 const Login = () => {
-
-    const [email, setEmail] = useState('')
-      const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const fields = [
     {
@@ -22,41 +22,37 @@ const Login = () => {
       name: "password",
       require: true,
       id: "passwordInput",
-    }]
+    },
+  ];
 
-     const submitHandler = (event) => {
-       event.preventDefault();
-       console.log( email, password);
-       // alert("submit hit")
-       setEmail("");
-      
-       setPassword("");
-      
-     };
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    console.log(email, password);
+
+    try {
+      const { data, error } = await supabase.auth.getSession();
+
+      if (data) {
+        console.log(data);
+        window.location.assign("/userdashboard");
+      } else{
+        throw error
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
+    setEmail("");
+
+    setPassword("");
+  };
   return (
     <div className="form_Container">
       <form onSubmit={submitHandler}>
         <h2>Sign Up form</h2>
         {fields.map((field, index) => {
-          // console.log(field)
-          return (
-            <Form field={field} index={index} key={index} />
-            // <div className="form-group py-2" key={index}>
-            //   <label className="text-capitalize" htmlFor={input.id}>
-            //     {input.name} :
-            //   </label>
-            //   <input
-            //   value={input.value}
-            //   onChange={(e)=>{
-            //     input.update(e.target.value)
-            //   }}
-            //     type={input.type}
-            //     className="form-control"
-            //     id={input.id}
-            //     placeholder={input.name}
-            //   />
-            // </div>
-          );
+          
+          return <Form field={field} index={index} key={index} />;
         })}
 
         {/* render the button component! */}
@@ -64,6 +60,6 @@ const Login = () => {
       </form>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

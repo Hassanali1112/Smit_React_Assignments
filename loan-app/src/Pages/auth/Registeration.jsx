@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Form from '../../Components/Form/Form'
 import { Button } from 'react-bootstrap'
+import { supabase } from '../../Utils/config'
 import "./auth.css"
 
 const Registeration = () => {
@@ -55,9 +56,76 @@ const Registeration = () => {
     },
   ];
 
-  const submitHandler = (event) =>{
+  const submitHandler = async (event) =>{
     event.preventDefault()
-    console.log(name,email,password,confPassword,number)
+    let nameRegex = /^[A-Za-z]+ [A-Za-z]+$/
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let passwordRexex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    let numberRegex = /^(?:\+92|0092|92|0)?3[0-9]{9}$/;
+
+
+
+
+    if(nameRegex.test(name)){
+      console.log("done")
+      if(emailRegex.test(email)){
+      console.log("done");
+      if(passwordRexex.test(password)){
+      console.log("done");
+        if(password === confPassword){
+      console.log("done");
+          if(numberRegex.test(number)){
+            console.log("finally done")
+            try {
+              const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                      })
+                      if(error) throw error;
+                      if(data) {
+                        console.log(data)
+                        const { data : newUserData , error : newUserDataError } = await supabase
+                          .from("users")
+                          .insert({  
+                            name,
+                            email,
+                            password,
+                            number,
+                            })
+                          .select();
+                          if(newUserData){
+                            console.log(newUserData)
+                            window.location.assign("/login");
+                          } else{
+                            console.log(newUserDataError)
+                          }
+                      }
+                  
+            } catch (error) {
+              console.log(error)
+            }
+          } else{
+      console.log("number is incorrect formate");
+
+          }
+          
+        } else{
+      console.log("passwords did not match");
+
+        }
+      } else{
+      console.log("password is incorrect formate");
+
+      }
+
+      } else{
+      console.log("email is incorrect formate");
+
+      }
+    }else{
+      console.log("name is incorrect formate")
+    }
+    // console.log(name,email,password,confPassword,number)
     // alert("submit hit")
     setEmail("")
     setName("")
@@ -69,13 +137,13 @@ const Registeration = () => {
 
   return (
     <>
-      <div className="form_Container">
-     <form onSubmit={submitHandler}>
-       <h2>Sign Up form</h2>
-         {fields.map((field, index) => {
-          // console.log(field)
-          return (
-            <Form field={field} index={index} key={index} />
+      <div className="form_Container container">
+        <form onSubmit={submitHandler}>
+          <h2 className="text-center">Sign Up Form</h2>
+          {fields.map((field, index) => {
+            // console.log(field)
+            return (
+              <Form field={field} index={index} key={index} />
               // <div className="form-group py-2" key={index}>
               //   <label className="text-capitalize" htmlFor={input.id}>
               //     {input.name} :
@@ -91,23 +159,24 @@ const Registeration = () => {
               //     placeholder={input.name}
               //   />
               // </div>
+            );
+          })}
 
-          );
-        })}
+          {/* render the button component! */}
+          <input
+            type="submit"
+            value={"Submit"}
+            className="btn"
+          />
+        </form>
+      </div>
 
-        {/* render the button component! */}
-        <input type="submit" value={"Submit"} className="btn btn-success" />
-      </form>
-    </div>
-
-      
-        {/* <Form
+      {/* <Form
           fields={fields}
           submitHandler={submitHandler}
           formText="Registeration Form"
           btnText="Submit"
         /> */}
-      
 
       {/* <input type='text' value={name} onChange={(e)=>{setName(e.target.value)}} /> */}
     </>
