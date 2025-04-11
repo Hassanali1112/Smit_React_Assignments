@@ -34,6 +34,22 @@ const Login = () => {
 
       if (data) {
         console.log(data);
+        const { data : userData, error : userDataError } = await supabase
+          .from("users")
+          .select()
+          .eq("email", email);
+          if(userData){
+            console.log(userData)
+            const activeUser = {
+              name : userData[0].name,
+              email : userData[0].email,
+              number : userData[0].number,
+            }
+            console.log(activeUser)
+            localStorage.setItem("activeUser", JSON.stringify(activeUser))
+          } else{
+            console.log(userDataError)
+          }
         window.location.assign("/userdashboard");
       } else{
         throw error
@@ -48,7 +64,7 @@ const Login = () => {
   };
   return (
     <div className="form_Container">
-      <form onSubmit={submitHandler}>
+      <form className="form" onSubmit={submitHandler}>
         <h2>Sign Up form</h2>
         {fields.map((field, index) => {
           

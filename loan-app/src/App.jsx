@@ -5,6 +5,7 @@ import './App.css'
 import Login from "./Pages/auth/Login";
 import Registeration from './Pages/auth/Registeration'
 import { getUsers } from "./Utils/config";
+// import DashboardLayoutBasic from "./Components/Dashboard/Dashboard";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       <div className="container">
         {/* <Login /> */}
         {/* <Registeration /> */}
+        {/* <DashboardLayoutBasic /> */}
         hello
       </div>
     </>

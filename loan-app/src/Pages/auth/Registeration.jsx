@@ -138,7 +138,7 @@ const Registeration = () => {
   return (
     <>
       <div className="form_Container container">
-        <form onSubmit={submitHandler}>
+        <form className='form' onSubmit={submitHandler}>
           <h2 className="text-center">Sign Up Form</h2>
           {fields.map((field, index) => {
             // console.log(field)
@@ -170,15 +170,6 @@ const Registeration = () => {
           />
         </form>
       </div>
-
-      {/* <Form
-          fields={fields}
-          submitHandler={submitHandler}
-          formText="Registeration Form"
-          btnText="Submit"
-        /> */}
-
-      {/* <input type='text' value={name} onChange={(e)=>{setName(e.target.value)}} /> */}
     </>
   );
 }

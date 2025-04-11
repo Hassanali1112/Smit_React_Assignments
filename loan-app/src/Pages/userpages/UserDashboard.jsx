@@ -1,8 +1,11 @@
 import React from 'react'
+import MyNavbar from '../../Components/Navbar/MyNavbar'
 
 const UserDashboard = () => {
   return (
-    <div>UserDashboard</div>
+    <>
+    <MyNavbar />
+    </>
   )
 }
 
