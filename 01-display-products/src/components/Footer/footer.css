@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.footer h6{
+  font-size: 1.2rem !important;
+}
+.footer ul{
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  /* border: 2px solid red; */
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+.footer a{
+  color: #acacac;
+  font-weight: 500;
+  font-size: .9rem;
+  text-decoration: none !important;
+}
+
+.social-links li a{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.social-links li a i{
+  background-color: none !important;
+  color: #fff;
+}
+.social-links .icon_span{
+  width: 40px ;
+  height: 40px ;
+  font-size: 12px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.card_container img{
+  width: 100%;
+  height: 35px !important;
+
+}
+.accordion , .accordion-item{
+  border: none !important;
+}
+.accordion-item .accordion-header .accordion-button , .accordion button{
+  background-color: #2E2E54 !important;
+  border: 1px 0 1px 0 !important;
+  color: #fff;
+}
+
+@media screen and (max-width : 992px) and (min-width :764px){
+  .footer ul li a{
+    font-size: .8rem;
+  }
+  
+}
+
+@media screen and (max-width : 764px) {
+  .md_class{
+    display: none !important;
+  }
+  
+}
+@media screen and (min-width : 764px) {
+  .accordian_footer {
+    display: none !important;
+  }
+
+}

@@ -1,12 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import MyNavbar from "./components/navbar/Navbar";
-import { Button } from "react-bootstrap";
+
+import MyCarousel from "./components/Slider/MyCarousel";
+import { slider } from "../public/data";
 
 const App = () => {
   return (
     <>
       <MyNavbar />
+      <MyCarousel slides={slider} />
       {/* <Button variant="primary">Primary</Button> */}
     </>
   );

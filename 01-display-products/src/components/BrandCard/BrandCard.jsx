@@ -5,16 +5,16 @@ const BrandCard = ({ title, imgUrl }) => {
   // console.log(imgUrl);
   return (
     <>
-      <Card
-        className="w-100 p-0  "
-         style={{ border : "none" }}
+      <Card 
+        className="electronics_card"
+         style={{ border : "none",width : "95%",backgroundColor : "transparent" }}
       >
         <div className="img_container d-flex justify-content-center">
-          <Card.Img variant="top" style={{ width: "80px" }} src={imgUrl} />
+          <Card.Img variant="top" src={imgUrl} />
         </div>
 
         <Card.Body className="border-none text-center px-0 pb-0 lead">
-          <Card.Title style={{ fontSize: ".83rem" }}>{title}</Card.Title>
+          <Card.Title style={{ fontSize: ".83rem" }}>{title ? title : ""}</Card.Title>
           <Card.Text></Card.Text>
 
           {/* <Button variant="success"></Button> */}

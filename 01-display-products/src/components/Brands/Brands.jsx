@@ -48,15 +48,14 @@ const Brands = () => {
   ];
 
   return (
-    <div className="container my-3 p-3 ">
+    <div className="container  my-4 px-3">
       <div
-        className="parent"
+        className="parent p-0"
         style={{ borderRadius: "10px", background: "#FFFFFF" }}
       >
         {
-          <Row className="p-3 justify-content-between row-gap-3">
+          <Row className="p-4 px-5 pb-0 justify-content-between row-gap-3">
             {cardItems.map((item, index) => {
-              console.log(item.imgUrl);
               return (
                 <Col md={1}  key={index} className="p-0 d-flex justify-content-center col_width">
                   <BrandCard title={item.title} imgUrl={item.imgUrl} />
