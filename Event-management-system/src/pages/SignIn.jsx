@@ -1,22 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
 import AuthForm from "../components/AuthForm";
+import supabase from "../lib/supabaseClient";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import useAuth from "../context/AuthContextProvider";
 
 const signinImage =
   "https://images.unsplash.com/photo-1523289333742-be1143f6b766?auto=format&fit=crop&w=800&q=80";
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const navigate = useNavigate();
+  const {user,setUser} = useAuth()
+  console.log(user)
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Sign In:", formData);
+  const handleAuthSubmit = async (credentials) => {
+    console.log(credentials)
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: credentials.email,
+        password: credentials.password,
+      });
+
+      if (error) {
+        toast.error("Invalid credentials. Please try again.");
+        console.error("Login error:", error);
+        return;
+      } else {
+        console.log(data)
+        const { data : loggedInData , error : loginError } = await supabase.from("users").select();
+         
+
+        if(loginError){
+          console.log('Login Error ==>', loginError)
+        } else{
+          console.log(loggedInData);
+          setUser(loggedInData[0]);
+          toast.success("Login successful! Redirecting to dashboard...");
+          setTimeout(() => {
+            navigate("/dashboard");
+            
+          }, 1500);
+        }
+
+       
+      }
+
+     
+    } catch (err) {
+      toast.error("Something went wrong.");
+      console.error("Unexpected login error:", err);
+    }
   };
 
   return (
@@ -30,12 +65,7 @@ const SignIn = () => {
           />
         </div>
         <div className="flex items-center justify-center p-6">
-          <AuthForm
-            type="signin"
-            formData={formData}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-          />
+          <AuthForm type="signin" onSubmit={handleAuthSubmit} />
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import supabase from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
@@ -25,13 +24,9 @@ const SignUp = () => {
           .from("users")
           .insert({ firstName : details.firstName, lastName : details.lastName, email : details.email })
           .select();
-
           if(newUserData){
-            console.log(newUserData);
-            // ✅ Show toast
+            console.log(newUserData); 
             toast.success("Check your email to verify your account");
-
-            // ⏳ Delay 2 seconds before redirecting
             setTimeout(() => {
               navigate("/login");
             }, 2000);
