@@ -9,6 +9,10 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import { AuthContextProvider } from './context/AuthContextProvider.jsx'
 import { useState } from 'react';
+import DashboardLayout from './DashboardLayout.jsx';
+import DashboardHome from './pages/dashboard/DashboardHome.jsx';
+import CreateEvent from './pages/dashboard/CreateEvent.jsx';
+import AllEvents from './pages/dashboard/AllEvents.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +43,12 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <SignIn />,
+    element: <DashboardLayout />,
+    children: [
+      { path: "", element: <DashboardHome /> },
+      { path: "create-event", element: <CreateEvent /> },
+      { path: "all-events", element: <AllEvents /> },
+    ],
   },
 ]);
 
