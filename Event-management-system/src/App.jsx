@@ -13,6 +13,7 @@ import DashboardLayout from './DashboardLayout.jsx';
 import DashboardHome from './pages/dashboard/DashboardHome.jsx';
 import CreateEvent from './pages/dashboard/CreateEvent.jsx';
 import AllEvents from './pages/dashboard/AllEvents.jsx';
+import AdminPanel from './pages/Admin/AdminPanel.jsx';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: "", element: <DashboardHome /> },
       { path: "create-event", element: <CreateEvent /> },
       { path: "all-events", element: <AllEvents /> },
+      { path: "admin-panel", element: <AdminPanel /> },
     ],
   },
 ]);
